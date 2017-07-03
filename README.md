@@ -171,3 +171,4 @@ Hence by considering the elements one by one we have built up our solution or in
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
   - [Geeks for geeks for practice problems](http://practice.geeksforgeeks.org/topics/Dynamic-Programming/)
   - [Geeks for geeks tutorials](http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming)
+  -[Hackerearth article for problems involving grids](https://www.hackerearth.com/practice/notes/dynamic-programming-problems-involving-grids/)
