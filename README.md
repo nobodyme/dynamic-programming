@@ -38,19 +38,21 @@ You would compare every element with every other element, if it's greater than t
 
 We set `count=1` initially because when all numbers are same in the array i.e { 2, 2, 2, 2}, we return count as 1 since one element is the still the subarray of the larger one which is simply 2.
 
-***pseudo code***
-check j > k
-check 12 > 10  yes --> count++, j++, k++
-check 32 > 12  yes --> count++, j++, k++
-check 22 > 32  no  --> j++
-check 23 > 32  no
-..
-..
-end
+***pseudo code*** </br>
+check j > k </br>
+check 12 > 10  yes --> count++, j++, k++ </br>
+check 32 > 12  yes --> count++, j++, k++ </br>
+check 22 > 32  no  --> j++ </br>
+check 23 > 32  no </br>
+.. </br>
+.. </br>
+end 
 
 so such an implementation returns the `max-length = 3`, which is { 10, 12, 32 }. We know it's incorrect. If only we knew that by avoiding 32 and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.
 
 We create another array for storing the count, as we discussed earlier we initialize it to `1`
+
+<div align="center">
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
@@ -107,6 +109,8 @@ And finally,
 | |  | j  |i | | | | |
 
 Since the highest is 6, that gives the longest increasing subsequence
+
+</div>
 
 ### Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
