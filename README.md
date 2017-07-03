@@ -36,15 +36,20 @@ So, how would go on solving that using brute force just like how you would perfo
 
 <div align="center">
 
-| 10  | 12  | 32  | 2 | 22  | 23  | 25 | 30 |
-|--:|---|---|---|---|---|---|---|
+
+| 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
+|---  |---  |---  | --- | --- |---  |--- |--- |
+| k,i |  j  |     |     |     |     |    |    |
+
 
 </div>
 
 You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
 
 ***pseudo code*** </br>
+*for all i</br>*
 *count = 1;</br>*
+//*if(j > k)</br>*
 *if (12 > 10)  yes --> count++, k=j, j++ </br>*
 *if (32 > 12)  yes --> count++, k=j, j++ </br>*
 *if (2 > 32)  no  --> j++ </br>*
