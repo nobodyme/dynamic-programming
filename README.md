@@ -77,12 +77,9 @@ Now let us consider 32, increment i to 32 and traverse from the beginning to see
 |count |1 |  2  |  1  |  1  |  1  |  1  |  1  |  1 |
 | | j |  |i | | | | |
 
+ 
+</br>Now if(32>10) --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1;
 
-</br>
-</br>   
-Now if(32>10) --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; 
-</br>
-</br>
 
 
 
@@ -91,11 +88,7 @@ Now if(32>10) --> therefore repeat the step of incrementing 32's count --> count
 |count |1 |  2  |  2  |  1  |  1  |  1  |  1  |  1 |
 | | j |  |i | | | | |
 
-</br>
-</br>
-j<i, so j is incremented
-</br>
-</br>
+</br>j<i, so j is incremented
 
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
@@ -103,12 +96,8 @@ j<i, so j is incremented
 |count |1 |  2  |  2  |  1  |  1  |  1  |  1  |  1 |
 | |  | j  |i | | | | |
 
-</br>
-</br>
-if(32>12) --> 32's count = 12's count + 1 = (2+1) = 3
-</br>
-</br>
 
+</br>if(32>12) --> 32's count = 12's count + 1 = (2+1) = 3
 
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
@@ -116,12 +105,7 @@ if(32>12) --> 32's count = 12's count + 1 = (2+1) = 3
 |count |1 |  2  |  3 |  1  |  1  |  1  |  1  |  1 |
 | |  | j  |i | | | | |
 
-</br>
-</br>
-Similarly considering 22 the array becomes,
-</br>
-</br>
-
+</br>Similarly considering 22 the array becomes,
 
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
@@ -129,12 +113,7 @@ Similarly considering 22 the array becomes,
 |count |1 |  2  |  3 |  3  |  1  |  1  |  1  |  1 |
 | |  | j  |i | | | | |
 
-</br>
-</br>
-And finally,
-</br>
-</br>
-
+</br>And finally,
 
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
@@ -143,8 +122,6 @@ And finally,
 | |  | j  |i | | | | |
 
 </div>
-</br>
-</br>
 
 Since the highest is 6, that gives the longest increasing subsequence
 
