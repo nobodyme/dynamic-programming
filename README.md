@@ -152,7 +152,7 @@ And similarly the rest of the array is traversed and the array becomes,
 
 </div>
 
-Since the highest is 6, that gives the longest increasing subsequence. Have a look at the [code snippet here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C) and the video of the above traversal is [linked here](https://youtu.be/Ns4LCeeOFS4).
+Since the highest is 6, that gives the longest increasing subsequence. Have a look at the [code snippet up here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C) and the video of the above traversal is [linked here](https://youtu.be/Ns4LCeeOFS4).
 
 Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/)
 
