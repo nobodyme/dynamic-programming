@@ -1,6 +1,6 @@
 # Dynamic Programming
 
-There were huge number of sources on the internet on this topic but still we (me and my friend) couldn't understand any of it until a very long time until we fiddled with code and tracked the output for every change in the input. So this repository is exactly created for people like us to make the transition from [greedy](https://en.wikipedia.org/wiki/Greedy_algorithm) to dynamic programming easier. This will just be an introduction to dynamic programming, so that one can pick it up from there. I have added additional sources for practice and other useful online sources that I found useful at the end and will contiue to do so as I find something new. It is for programmers who are comfortable with brute-force and might not the serve the purpose for absolute beginners. 
+There were huge number of sources on the internet on this topic but still we (me and my friend) couldn't understand any of it until a very long time until we fiddled with code and tracked the output for every change in the input. So this repository is exactly created for people like us to make the transition from [greedy](https://en.wikipedia.org/wiki/Greedy_algorithm) to dynamic programming easier. This will just be an introduction to dynamic programming, so that one can pick it up from there. I have added additional sources for practice and other useful online sources that I found useful at the end and will contiue to do so as I find something new. It is for programmers who are comfortable with brute-force and might not the serve the purpose for absolute beginners.
 
 ### Definition 
 
@@ -36,10 +36,9 @@ So, how would go on solving that using brute force just like how you would perfo
 
 You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
 
-We set `count=1` initially because when all numbers are same in the array i.e { 2, 2, 2, 2}, we return count as 1 since one element is the still the subarray of the larger one which is simply 2.
-
 ***pseudo code*** </br>
 if (j > k) </br>
+count = 1;
 if (12 > 10)  yes --> count++, j++, k++ </br>
 if (32 > 12)  yes --> count++, j++, k++ </br>
 if (2 > 32)  no  --> j++ </br>
@@ -48,7 +47,9 @@ if (22 > 32)  no </br>
 .. </br>
 end 
 
-so such an implementation returns the `max-length = 3`, which is { 10, 12, 32 }. We know it's incorrect. If only we knew that by avoiding 32 and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.
+So such an implementation returns the `max-length = 3`, which is { 10, 12, 32 }. We know it's incorrect. If only we knew that by avoiding 32 and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.
+
+We set `count=1` and not 0 initially, because if all numbers are same in the array i.e { 2, 2, 2, 2}, we must return count as 1 since one element is the still the subarray of the larger one which is simply 2 therefore returning 0 would be wrong.
 
 We create another array for storing the count, as we discussed earlier we initialize it to `1`
 
@@ -143,9 +144,14 @@ And similarly the rest of the array is traversed and the array becomes,
 
 </div>
 
-Since the highest is 6, that gives the longest increasing subsequence
+Since the highest is 6, that gives the longest increasing subsequence. Have a look at the [code snippet here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C).
 
 [The video of the above traversal is here](https://youtu.be/Ns4LCeeOFS4)
+
+### More to come
+
+  - Minimum cost path problem
+  - Minimum coin change
 
 ### Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
