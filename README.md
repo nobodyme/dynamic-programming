@@ -128,7 +128,8 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 |       |     |     |     | j  | i |
 </div>
 
-</br>Now 22 > 2 --> count of 22 becomes 2? No, we know that count reflects the longest subsequence, by traversing other elements in the array we obtained 3 as longest subsequence. So why lower it to 2? Hence while adding `count[i] = count[j]+1` make sure it benefits the cause. Therefore place `count[i] = max(count[j]+1,count[i])` ie with the maximum of two numbers to avoid such cases
+</br>Now 22 > 2 --> count of 22 becomes `count[j]+1` i.e. 2? 
+</br>No, we know that count reflects the longest subsequence, by traversing other elements in the array we obtained 3 as longest subsequence for 22. So why lower it to 2? Hence while adding `count[i] = count[j]+1` make sure it benefits the cause. Therefore place `count[i] = max(count[j]+1,count[i])` ie with the maximum of two numbers to avoid such cases.
 
 
 
