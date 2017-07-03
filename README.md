@@ -44,8 +44,7 @@ So, how would go on solving that using brute force just like how you would perfo
 You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
 
 ***pseudo code*** </br>
-//*if (j > k) </br>*
-*count = 1;*
+*count = 1;</br>*
 *if (12 > 10)  yes --> count++, k=j, j++ </br>*
 *if (32 > 12)  yes --> count++, k=j, j++ </br>*
 *if (2 > 32)  no  --> j++ </br>*
@@ -56,7 +55,7 @@ You would compare every element with every other element, if it's greater than t
 
 So such an implementation returns the `max-length = 3`, which is { 10, 12, 32 }. We know it's 6 and LIS is { 10, 12, 22, 23, 25, 30 }. If only we knew that by avoiding 32 and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem and different approach might but definitely in exponential time)
 
-We set `count=1` and not 0 initially, because if all numbers are same in the array i.e { 2, 2, 2, 2}, we must return count as 1 since one element is the still the subarray of the larger one which is simply 2 therefore returning 0 would be wrong.
+We set `count=1` and not 0 initially, because when we have case where all numbers are same in the array i.e { 2, 2, 2, 2}, we must return count as **1** since one element is the still the subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
 
 We create another array for storing the count, as we discussed earlier we initialize it to `1`
 
