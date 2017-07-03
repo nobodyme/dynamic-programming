@@ -97,33 +97,42 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 |count  |  1  |  2  |  1  |
 |       | j   |     |  i  |
 
- 
+</div>
+
 </br>Now since **if(32>10)** yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; and increment j.
+
+<div align="center">
 
 | array | 10  | 12  | 32  |
 |---    |---  |---  |---  |
 |count  |  1  |  2  |  2  |
 |       |     |  j  |  i  |
 
+</div>
+
 </br>**if(32>12)** --> 32's count = 12's count + 1 = (2+1) = 3
 
+<div align="center">
 
 | array | 10  | 12  | 32  |
 |---    |---  |---  |---  |
 |count  |  1  |  2  |  3  |
 |       |     |  j  |  i  |
 
+</div>
+
 </br>Similarly, **considering element 2** the array becomes,
 
+<div align="center">
 
 | array | 10  | 12  | 32  | 2 |
 |---    |---  |---  |---  |---|
 |count  |  1  |  2  |  3  | 1 |
 |       |  j  |     |     | i |
 
-</br>The array stays the same since each case checking **if(2>10)** or **if(2>12)** fails, and it's count variable remains unchanged.
-
 </div>
+
+</br>The array stays the same since each case checking **if(2>10)** or **if(2>12)** fails, and it's count variable remains unchanged.
 
 </br> Now let's add the next number, **22** and check for 10, 12, 32, similar to the previous for 10 and 12 count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
 
@@ -171,4 +180,4 @@ Hence by considering the elements one by one we have built up our solution or in
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
   - [Geeks for geeks for practice problems](http://practice.geeksforgeeks.org/topics/Dynamic-Programming/)
   - [Geeks for geeks tutorials](http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming)
-  -[Hackerearth article for problems involving grids](https://www.hackerearth.com/practice/notes/dynamic-programming-problems-involving-grids/)
+  - [Hackerearth article for problems involving grids](https://www.hackerearth.com/practice/notes/dynamic-programming-problems-involving-grids/)
