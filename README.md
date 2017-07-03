@@ -13,7 +13,7 @@ Or more simply, it is technique to save intermediate results in a calculation in
 
 ### Longest increasing subsequence
 The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements of the subsequence are sorted in increasing order. 
-For example, the length of LIS for { 10, 12, 32, 22, 23, 25, 30 } is 6 and LIS is { 10, 12, 22, 23, 25, 30 }
+For example, the length of LIS for { 10, 12, 32, 2, 22, 23, 25, 30 } is 6 and LIS is { 10, 12, 22, 23, 25, 30 }
 
 This will be elaborate step by step explanation about attaining the solution, since this is the first sum.
 
@@ -29,8 +29,8 @@ So, how would go on solving that using brute force just like how you would perfo
 
 <div align="center">
 
-| 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|--:|---|---|---|---|---|---|
+| 10  | 12  | 32  | 2 | 22  | 23  | 25 | 30 |
+|--:|---|---|---|---|---|---|---|
 
 </div>
 
@@ -39,11 +39,11 @@ You would compare every element with every other element, if it's greater than t
 We set `count=1` initially because when all numbers are same in the array i.e { 2, 2, 2, 2}, we return count as 1 since one element is the still the subarray of the larger one which is simply 2.
 
 ***pseudo code*** </br>
-check j > k </br>
-check 12 > 10  yes --> count++, j++, k++ </br>
-check 32 > 12  yes --> count++, j++, k++ </br>
-check 22 > 32  no  --> j++ </br>
-check 23 > 32  no </br>
+if (j > k) </br>
+if (12 > 10)  yes --> count++, j++, k++ </br>
+if (32 > 12)  yes --> count++, j++, k++ </br>
+if (2 > 32)  no  --> j++ </br>
+if (22 > 32)  no </br>
 .. </br>
 .. </br>
 end 
@@ -54,85 +54,100 @@ We create another array for storing the count, as we discussed earlier we initia
 
 <div align="center">
 
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  1  |  1  |  1  |  1  |  1  |  1  |  1 |
-| | j | i | | | | | |
+| array | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
+|---    |---  |---  |---  | --- | --- |---  |--- |--- |
+|count  |  1  |  1  |  1  |  1  |  1  | 1   | 1  | 1  |
+|       | j   |  i  |     |     |     |     |    |    |
 
 </div>
 
 Now we check in a similar way,
 
-if(12>10) --> increment corresponding count of 12 ie `count[i] = count[j] + 1;`
+For, now lets us consider only the elements 10 and 12 exist in the array.
+
+<div align="center">
+
+| array | 10  | 12  |
+|---    |---  |---  |
+|count  |  1  |  1  |
+|       | j   |  i  |
+
+</div>
+
+</br>if(12>10) --> increment corresponding count of 12 ie `count[i] = count[j] + 1;`
 
 Why is it, `count[j]+1`?
 Because the count[j] stores the max count of sequence when 10 is traversed, now since we chose to traverse through 10 we add it's length to 12's count.The result is the Longest subsequence when 10, 12 alone are the elements in the array.
 
-Now let us consider 32, increment i to 32 and traverse from the beginning to see adding 32 provides a longer subsequence, the array becomes,
+Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting element of the array and traverse from the beginning to see adding 32 provides a longer subsequence.
+</br>The array becomes,
 
 <div align="center">
 
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  2  |  1  |  1  |  1  |  1  |  1  |  1 |
-| | j |  |i | | | | |
+| array | 10  | 12  | 32  |
+|---    |---  |---  |---  |
+|count  |  1  |  2  |  1  |
+|       | j   |     |  i  |
 
  
-</br>Now if(32>10) --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1;
+</br>Now since if(32>10) yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; and increment j.
 
-
-
-
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  2  |  2  |  1  |  1  |  1  |  1  |  1 |
-| | j |  |i | | | | |
-
-</br>j<i, so j is incremented
-
-
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  2  |  2  |  1  |  1  |  1  |  1  |  1 |
-| |  | j  |i | | | | |
-
+| array | 10  | 12  | 32  |
+|---    |---  |---  |---  |
+|count  |  1  |  2  |  2  |
+|       |     |  j  |  i  |
 
 </br>if(32>12) --> 32's count = 12's count + 1 = (2+1) = 3
 
 
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  2  |  3 |  1  |  1  |  1  |  1  |  1 |
-| |  | j  |i | | | | |
+| array | 10  | 12  | 32  |
+|---    |---  |---  |---  |
+|count  |  1  |  2  |  3  |
+|       |     |  j  |  i  |
 
-</br>Similarly considering 22 the array becomes,
-
-
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  2  |  3 |  3  |  1  |  1  |  1  |  1 |
-| |  | j  |i | | | | |
-
-</br>And finally,
+</br>Similarly, considering 2 the array becomes,
 
 
-| array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
-|---|---|---|---|---|---|---|---|
-|count |1 |  2  |  3 |  3  |  4  |  5  |  6  | 
-| |  | j  |i | | | | |
+| array | 10  | 12  | 32  | 2 |
+|---    |---  |---  |---  |---|
+|count  |  1  |  2  |  3  | 1 |
+|       |  j  |     |     | i |
+
+</br>The array stays the same since each case checking if(2>10) or if(2>12) fails, and it's count variable remains unchanged.
+
+</div>
+
+</br> Now let's add the next number, 22 and check for 10, 12, 32, similar to the previous for 10 and 12 count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
+
+<div align="center">
+
+| array | 10  | 12  | 32  | 2 | 22 |
+|---    |---  |---  |---  |---| -- |
+|count  |  1  |  2  |  3  | 1 | 3  |
+|       |     |     |     | j  | i |
+</div>
+
+</br>Now 22 > 2 --> count of 22 becomes 2? No, we know that count reflects the longest subsequence, by traversing other elements in the array we obtained 3 as longest subsequence. So why lower it to 2? Hence while adding `count[i] = count[j]+1` make sure it benefits the cause. Therefore place `count[i] = max(count[j]+1,count[i])` ie with the maximum of two numbers to avoid such cases
+
+
+
+And similarly the rest of the array is traversed and the array becomes,
+
+<div align="center">
+
+| array | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
+|---    |---  |---  |---  | --- | --- |---  |--- |--- |
+|count  |  1  |  2  |  3  |  1  |  3  | 4   | 5  | 6  |
+|       |     |     |     |     |     |     | j  |  i |
+
 
 </div>
 
 Since the highest is 6, that gives the longest increasing subsequence
 
+[The video of the above traversal is here](https://youtu.be/Ns4LCeeOFS4)
+
 ### Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
   - [Geeks for geeks for practice](http://practice.geeksforgeeks.org/topics/Dynamic-Programming/)
   - [Geeks for geeks tutorials](http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming)
-
-
-
-
-
-
-
