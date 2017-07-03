@@ -59,6 +59,8 @@ We create another array for storing the count, as we discussed earlier we initia
 |count |1 |  1  |  1  |  1  |  1  |  1  |  1  |  1 |
 | | j | i | | | | | |
 
+</div>
+
 Now we check in a similar way,
 
 if(12>10) --> increment corresponding count of 12 ie `count[i] = count[j] + 1;`
@@ -68,49 +70,71 @@ Because the count[j] stores the max count of sequence when 10 is traversed, now 
 
 Now let us consider 32, increment i to 32 and traverse from the beginning to see adding 32 provides a longer subsequence, the array becomes,
 
+<div align="center">
+
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
 |count |1 |  2  |  1  |  1  |  1  |  1  |  1  |  1 |
 | | j |  |i | | | | |
+
+</div>
         
 Now if(32>10) --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1;
+
+<div align="center">
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
 |count |1 |  2  |  2  |  1  |  1  |  1  |  1  |  1 |
 | | j |  |i | | | | |
 
+</div>
+
 j<i, so j is incremented
+
+<div align="center">
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
 |count |1 |  2  |  2  |  1  |  1  |  1  |  1  |  1 |
 | |  | j  |i | | | | |
 
+</div>
+
 if(32>12) --> 32's count = 12's count + 1 = (2+1) = 3
+
+<div align="center">
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
 |count |1 |  2  |  3 |  1  |  1  |  1  |  1  |  1 |
 | |  | j  |i | | | | |
 
+</div>
+
 Similarly considering 22 the array becomes,
+
+<div align="center">
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
 |count |1 |  2  |  3 |  3  |  1  |  1  |  1  |  1 |
 | |  | j  |i | | | | |
 
+</div>
+
 And finally,
+
+<div align="center">
 
 | array | 10  | 12  | 32  | 22  | 23  | 25 | 30 |
 |---|---|---|---|---|---|---|---|
 |count |1 |  2  |  3 |  3  |  4  |  5  |  6  | 
 | |  | j  |i | | | | |
 
-Since the highest is 6, that gives the longest increasing subsequence
-
 </div>
+
+Since the highest is 6, that gives the longest increasing subsequence
 
 ### Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
