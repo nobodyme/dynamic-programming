@@ -25,7 +25,7 @@ For example, the length of LIS for { 10, 12, 32, 2, 22, 23, 25, 30 } is 6 and LI
 This will be elaborate step by step explanation about attaining the solution, since this is the first sum.
 
 So how would go on solving that?
-Oh, the previous example told me to save the sub-problems to make the computation easier!
+Oh, the properties I read talked about saving the sub-problems to make the computations easier!
 What are the sub-problems here?
 
 Oh, it's too tough.
