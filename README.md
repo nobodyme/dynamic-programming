@@ -177,9 +177,26 @@ And similarly the rest of the array is traversed and the array becomes,
 
 </div>
 
-Since the highest is 6, that gives the longest increasing subsequence. Have a look at the [code snippet up here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C) and the video of the above traversal is [linked here](https://youtu.be/Ns4LCeeOFS4).
+Since the highest is 6, that gives the longest increasing subsequence, the video of the above traversal is [linked here](https://youtu.be/Ns4LCeeOFS4). Let's have a look at the code snippet of the same below.
+As we have learnt, 
+   - We intialize count array to 1
+   - Then calculate count for every element
 
-Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/)
+    for(i=0;i<n;i++)
+    count[i] = 1;
+
+    for(i=1;i<n;i++)
+    {
+     for(j=0;j<i;j++)
+     {
+     if(array[i] > array[j])
+      count[i] = max(count[i],count[j]+1);
+     }
+    }
+
+After that we find the maximum of the count array and print it, [full code snippet is here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C).
+
+Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/).
 
 ### More to come
 
