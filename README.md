@@ -46,7 +46,7 @@ So, how would go on solving that using brute force just like how you would perfo
 
 You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
 
-***pseudo code*** </br> (Skip this code if you don't follow)
+***pseudo code*** (Skip this code if you don't follow) </br> 
 
     for(i=0;i<n-1;i++)
     {   
