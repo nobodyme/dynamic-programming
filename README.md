@@ -24,7 +24,7 @@ For example, the length of LIS for { 10, 12, 32, 2, 22, 23, 25, 30 } is 6 and LI
 
 This will be elaborate step by step explanation about attaining the solution, since this is the first sum.
 
-So how would go on solving that?
+So how would you go on solving that?
 Oh, the properties I read talked about saving the sub-problems to make the computations easier!
 What are the sub-problems here?
 
@@ -32,7 +32,7 @@ Oh, it's too tough.
 
 No, it's not we will work together.
 
-So, how would go on solving that using brute force just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
+So, how would go on solving that using **brute force** just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
 
 <div align="center">
 
@@ -71,6 +71,8 @@ if(32>12) yes--> count is 3, then</br>
 At this point **count=3**, from there on count won't get incremented because the following elements are lesser than 32 and hence condition like (22>32) will consecutively fail. If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem a different approach might but definitely in exponential time)
 
  And we set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e { 2, 2, 2, 2}, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
+ 
+**Dp solution:**
 
 We create another array for storing the count for each member of the array, as we discussed earlier we initialize it to `1`
 
