@@ -47,18 +47,25 @@ So, how would go on solving that using brute force just like how you would perfo
 You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
 
 ***pseudo code*** </br>
-*for all i</br>*
-*count = 1;</br>*
-//*if(j > k)</br>*
-*if (12 > 10)  yes --> count++, k=j, j++ </br>*
-*if (32 > 12)  yes --> count++, k=j, j++ </br>*
-*if (2 > 32)  no  --> j++ </br>*
-*if (22 > 32)  no </br>*
-*.. </br>*
-*.. </br>*
-*end*
 
-So such an implementation returns the `max-length = 3`, which is { 10, 12, 32 }. We know it's 6 and LIS is { 10, 12, 22, 23, 25, 30 }. If only we knew that by avoiding 32 and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem and different approach might but definitely in exponential time)
+    for(i=0;i<n-1;i++)
+    {   
+		 count = 1;
+		 for(j=i+1,k=i;j<n,k<n-1;j++)
+		 {
+			 if(a[j] > a[k])
+			 {
+				 k=j;
+				 count++;
+			 }
+			 if(count>maxi)
+				maxi = count;
+		 }
+    }
+    printf("\nMax-length = %d\n",maxi)
+  
+
+So such an implementation returns the `max-length = 5`, which is { 2, 22, 23, 24, 25 }. We know it's 6 and LIS is { 10, 12, 22, 23, 25, 30 }. Why does it fail to catch the above lis? because while traversing { 10, 12, 32, 22, 23, 25, 30}, the code will find 32 is greater than 12 and increment **count 3**, from there on count won't get incremented because the following elements are lesser than 32. If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem and different approach might but definitely in exponential time)
 
 We set `count=1` and not 0 initially, because when we have case where all numbers are same in the array i.e { 2, 2, 2, 2}, we must return count as **1** since one element is the still the subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
 
