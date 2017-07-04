@@ -62,7 +62,7 @@ You would compare every element with every other element, if it's greater than t
 				maxi = count;
 		 }
     }
-    printf("\nMax-length = %d\n",maxi)
+    printf("\nMax-length = %d\n",maxi);
   
 
 So such an implementation returns the `max-length = 5`, which is { 2, 22, 23, 24, 25 }. We know it's 6 and LIS is { 10, 12, 22, 23, 25, 30 }. Why does it fail to catch the above lis? because while traversing { 10, 12, 32, 22, 23, 25, 30}, the code will run as follows,it will check,</br>
@@ -70,7 +70,7 @@ if(10>12) yes--> count is 2, then</br>
 if(32>12) yes--> count is 3, then</br>
 At this point **count=3**, from there on count won't get incremented because the following elements are lesser than 32 and hence condition like (22>32) will consecutively fail. If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem a different approach might but definitely in exponential time)
 
- And we set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e { 2, 2, 2, 2}, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
+ And we set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e { 2, 2, 2, 2 }, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
  
 **Dp solution:**
 
@@ -81,7 +81,7 @@ We create another array for storing the count for each member of the array, as w
 | array | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
 |---    |---  |---  |---  | --- | --- |---  |--- |--- |
 |count  |  1  |  1  |  1  |  1  |  1  | 1   | 1  | 1  |
-|       | j   |  i  |     |     |     |     |    |    |
+|       |  j  |  i  |     |     |     |     |    |    |
 
 </div>
 
@@ -94,7 +94,7 @@ For, now lets us consider only the elements **10** and **12** exist in the array
 | array | 10  | 12  |
 |---    |---  |---  |
 |count  |  1  |  1  |
-|       | j   |  i  |
+|       |  j  |  i  |
 
 </div>
 
@@ -111,7 +111,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 | array | 10  | 12  | 32  |
 |---    |---  |---  |---  |
 |count  |  1  |  2  |  1  |
-|       | j   |     |  i  |
+|       |  j  |     |  i  |
 
 </div>
 
@@ -148,7 +148,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 
 </div>
 
-</br>The array stays the same since each case checking **if(2>10)** or **if(2>12)** fails, and it's count variable remains unchanged.
+</br>The array stays the same since each case checking **if(2>10)** , **if(2>12)** or **if(2>32)** fails, and it's count variable remains unchanged.
 
 </br> Now let's add the next number, **22** and check for 10, 12, 32, similar to the previous for 10 and 12 count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
 
@@ -157,7 +157,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 | array | 10  | 12  | 32  | 2 | 22 |
 |---    |---  |---  |---  |---| -- |
 |count  |  1  |  2  |  3  | 1 | 3  |
-|       |     |     |     | j  | i |
+|       |     |     |     | j | i  |
 </div>
 
 </br>Now **if(22 > 2)** --> count of 22 becomes `count[j]+1` i.e. 2? 
@@ -172,7 +172,7 @@ And similarly the rest of the array is traversed and the array becomes,
 | array | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
 |---    |---  |---  |---  | --- | --- |---  |--- |--- |
 |count  |  1  |  2  |  3  |  1  |  3  | 4   | 5  | 6  |
-|       |     |     |     |     |     |     | j  |  i |
+|       |     |     |     |     |     |     | j  | i  |
 
 
 </div>
