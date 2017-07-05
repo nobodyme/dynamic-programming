@@ -34,7 +34,7 @@ No, it's not we will work together.
 
 So, how would go on solving that using **brute force** just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
 
-<div align="center">
+<center>
 
 
 | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
@@ -42,7 +42,7 @@ So, how would go on solving that using **brute force** just like how you would p
 | k,i |  j  |     |     |     |     |    |    |
 
 
-</div>
+</center>
 
 You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
 
