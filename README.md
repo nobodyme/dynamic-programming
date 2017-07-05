@@ -115,7 +115,18 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 
 </div>
 
-</br>Now since **if(32>10)** yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; and increment j.
+</br>Now since **if(32>10)** yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1;
+
+<div align="center">
+
+| array | 10  | 12  | 32  |
+|---    |---  |---  |---  |
+|count  |  1  |  2  |  2  |
+|       |  j  |     |  i  |
+
+</div>
+
+</br>Then increment j,
 
 <div align="center">
 
@@ -125,6 +136,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 |       |     |  j  |  i  |
 
 </div>
+
 
 </br>**if(32>12)** --> 32's count = 12's count + 1 = (2+1) = 3
 
