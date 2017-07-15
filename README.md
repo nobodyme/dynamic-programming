@@ -14,9 +14,13 @@ Before that, we need to identify whether a problem has the following properties,
   
   - [Overlapping Sub-problem](http://www.geeksforgeeks.org/dynamic-programming-set-1/)
   - [Optimal Substructure](http://www.geeksforgeeks.org/dynamic-programming-set-2-optimal-substructure-property/)
+  
+### Problems:
 
+  - [Longest increasing subsequence](#problem-1)
+  - [Minimum cost problem](#problem-2)
 
-### Longest increasing subsequence
+### Longest increasing subsequence <a name="problem-1"></a>
 The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements of the subsequence are sorted in increasing order. 
 For example, the length of LIS for { 10, 12, 32, 2, 22, 23, 25, 30 } is 6 and LIS is { 10, 12, 22, 23, 25, 30 }
 
@@ -161,7 +165,7 @@ After that we find the maximum of the count array and print it, [full code snipp
 
 Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/).
 
-### Minimum cost problem
+### Minimum cost problem <a name="problem-2"></a>
 
 Given a cost matrix cost[][] and a position (m, n) in cost[][], write a function that returns cost of minimum cost path to reach (m, n) from (0, 0). Each cell of the matrix represents a cost to traverse through that cell. Total cost of a path to reach (m, n) is sum of all the costs on that path (including both source and destination). You can only traverse down, right and diagonally lower cells from a given cell, i.e., from a given cell (i, j), cells (i+1, j), (i, j+1) and (i+1, j+1) can be traversed. You may assume that all costs are positive integers.
 
