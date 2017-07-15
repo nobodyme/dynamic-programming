@@ -6,7 +6,7 @@ There were huge number of sources on the internet on this topic but still we (me
 
 So what's dynamic programming? Let's first look at a more formal definition.
 
-Dynamic programming (also known as dynamic optimization) is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions. The next time the same subproblem occurs, instead of recomputing its solution, one simply looks up the previously computed solution, thereby saving computation time at the expense of a (hopefully) modest expenditure in storage space. (Each of the subproblem solutions is indexed in some way, typically based on the values of its input parameters, so as to facilitate its lookup).[(Source-Wiki)](https://en.wikipedia.org/wiki/Dynamic_programming).
+Dynamic programming (also known as dynamic optimization) is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions. The next time the same subproblem occurs, instead of recomputing its solution, one simply looks up the previously computed solution, thereby saving computation time at the expense of a (hopefully) modest expenditure in storage space. (Each of the subproblem solutions is indexed in some way, typically based on the values of its input parameters, so as to facilitate its lookup)[(Source-Wiki)](https://en.wikipedia.org/wiki/Dynamic_programming).
 
 Or more simply, it is technique to save intermediate results in a calculation in any comfortable format so that the result can be used for further computation instead of calculating it all over again at the arrival of an additional input. Sounds simple enough? Yes, indeed it is, let's have a look at an example to put it right through our skull.
 
@@ -28,15 +28,13 @@ For example, the length of LIS for {10, 12, 32, 2, 22, 23, 25, 30} is 6 and LIS 
 
 This will be elaborate step by step explanation about attaining the solution, since this is the first sum.
 
-So how would you go on solving that?
-Oh, the properties I read talked about saving the sub-problems to make the computations easier!
-What are the sub-problems here?
+**Me:** So how would you go on solving that?</br>
+**Friend:** Oh, the properties I read talked about saving the sub-problems to make the computations easier!</br>
+**Me:** What are the sub-problems here? </br>
+**Friend:** Oh, it's too tough.</br>
+**Me:** No, it's not we will work together.</br>
 
-Oh, it's too tough.
-
-No, it's not we will work together.
-
-So, how would go on solving that using **brute force** just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
+Simply, how would go on solving that using **brute force** just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
 
 
 | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
@@ -44,9 +42,9 @@ So, how would go on solving that using **brute force** just like how you would p
 | k,i |  j  |     |     |     |     |    |    |
 
 
-You would compare every element with every other element, if it's greater than the current one, you would increase count variable and print the highest one, right? Let us look at the result after such an implementation in the above array.
+**Friend:** I would compare every element with every other element, if it's greater than the current one, I would increase count variable and I would print the highest count, I get. Roughly I would code it something like this</br>
 
-***pseudo code*** (Skip this code if you don't follow) </br> 
+***pseudo code*** (It's okay if you don't understand my friend's code) </br> 
 
     for(i=0;i<n-1;i++)
     {   
@@ -65,38 +63,58 @@ You would compare every element with every other element, if it's greater than t
     printf("\nMax-length = %d\n",maxi);
   
 
-So such an implementation returns, `max-length = 5`, which is {2, 22, 23, 24, 25}. We know it's 6 and LIS is {10, 12, 22, 23, 25, 30}. Why does it fail to catch the above lis? because while traversing {10, 12, 32, 22, 23, 25, 30}, the code will run as follows,it will check,</br>
+**Me:** Let's run it.</br> 
+**Friend:** Uh? Okay.</br> 
+**Me:** So what's the output?</br> 
+**Friend:** The program returns, `max-length = 5`, which I guess is {2, 22, 23, 24, 25}. But we know it's 6 and the LIS is {10, 12, 22, 23, 25, 30}.</br>
+Why does it fail to catch the above lis?</br>
+
+**Me:** Because while traversing {10, 12, 32, 22, 23, 25, 30} the code will run as follows,it will check,</br>
 if(10>12) yes--> count is 2, then</br>
 if(32>12) yes--> count is 3, then</br>
-At this point **count = 3**, from there on count won't get incremented because the following elements are lesser than 32 and hence condition like (22>32) will consecutively fail. If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem, a different approach might but definitely in exponential time)
+At this point **count = 3**, from there on count won't get incremented because the following elements are lesser than 32 and hence condition like (22>32) will consecutively fail.</br> 
 
- And we set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e {2, 2, 2, 2}, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
+**Friend:** If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`.</br> 
+**Me:** This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it(Note: Not that brute force cannot solve the problem, a different approach might but definitely in exponential time).
+
+**NOTE:** And my friend has set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e {2, 2, 2, 2}, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
  
 **Dp solution:**
 
-So how would you code the same in dp, well actually it's easier.</br>
-We first start off by creating another array for storing the count for each member of the array and as we discussed earlier we initialize it to `1`
+**Me:** So how would you code the same in dp, well actually it's easier.</br>
+**Friend:** Since you said we store counts of all variables, we initialize an array of same size of corresponding counts?</br> 
+**Me:** Exactly, we first start off by creating another array for storing the count for each member of the array as we discussed and initialize all of them to **1**.</br> 
 
 | array | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
 |---    |---  |---  |---  | --- | --- |---  |--- |--- |
 |count  |  1  |  1  |  1  |  1  |  1  | 1   | 1  | 1  |
 |       |  j  |  i  |     |     |     |     |    |    |
 
-Now we check in a similar way,
-
-For, now lets us consider only the elements **10** and **12** exist in the array.
+**Friend:** Now we check in a similar way?</br> 
+**Me:** Yeah but for now, lets us consider only the element **10** exists in the array.</br> 
+**Friend:** Why?</br> 
+**Me:** To make it simpler?! Why else? Listen along. So what is the longest increasing subsequence then?</br>
+**Friend:** 1 of course and LIS is {10}.</br>
+**Me:** So now, say, we add 12 and set it's initial count to 1
 
 | array | 10  | 12  |
 |---    |---  |---  |
 |count  |  1  |  1  |
 |       |  j  |  i  |
 
-</br>**if(12>10)** --> increment corresponding count of 12 ie `count[i] = count[j] + 1;`
+**Friend:** We check **if(12>10)** so 12's count gets incremented? </br> 
+**Me:** Yes, now that 12>10, 12's count becomes `count of 10 + 1` since count of 10 already represents the longest increasing subsequence that can be made with the existing elements. Count of 12 now represents {10} + {12} = {10 ,12} or simply `count[i] = count[j]+1;` which is 2</br> 
 
-Why is it, `count[j]+1`?
-Because the count[j] stores the max count of sequence when 10 is traversed, now since we find another element 12 greater than 10 and we chose to traverse through 10 we add it's length to 12's count + 1 (i.e 12 itself).The result is the Longest increasing subsequence (i.e. 2) when 10, 12 alone are the elements in the array.
+**Friend:** So let me clear this up, when 10 was alone LIS is 1 and now that 12 is added and we find {10, 12} could be LIS since 12>10 and so we add count of 10's to 12's count and plus 1 to include the number itself.</br> 
+**Me:** That's right and the array becomes,</br> 
 
-Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting element of the array and traverse from the beginning to see **adding 32** provides a longer subsequence.
+| array | 10  | 12  |
+|---    |---  |---  |
+|count  |  1  |  2  |
+|       |  j  |  i  |
+
+
+Now let us consider 32, increment `i to 32 and j to 10` i.e. j to the starting element of the array and traverse from the beginning to see **adding 32** provides a longer subsequence.
 </br>The array becomes,
 
 
@@ -105,11 +123,13 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 |count  |  1  |  2  |  1  |
 |       |  j  |     |  i  |
 
-</br>Now since **if(32>10)** yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; Check to see if other elements in the array prove useful too, therefore increment j till all elements before the 32 are traversed,
+</br>**Friend:** Yes, it does prove longer. Since **(32>10)** therefore we increment 32's count --> count[i] = count[j]+1;
+
+**Me:** We check all numbers before 32 to see if they can be added to form a sequence with it, so increment j, continue filling in the boxes!
 
 ![animated](https://user-images.githubusercontent.com/22789194/27852855-3ce86814-6150-11e7-9a31-bcb108e1308d.gif)
 
-</br>**if(32>12)** --> 32's count = 12's count + 1 = (2+1) = 3
+</br>**Friend**: Okay I will, So **if(32>12)** --> 32's count = 12's count + 1 = (2+1) = 3
 
 | array | 10  | 12  | 32  |
 |---    |---  |---  |---  |
@@ -125,7 +145,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 
 </br>The array stays the same since each case checking **if(2>10)** , **if(2>12)** or **if(2>32)** fails, and it's count variable remains unchanged.
 
-</br> Now let's add the next number, **22** and check for 10, 12, 32, similar to the previous one, for 10 and 12, count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
+</br> Now I'm adding the next number, **22** and check for 10, 12, 32, similar to the previous one, for 10 and 12, count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
 
 | array | 10  | 12  | 32  | 2 | 22 |
 |---    |---  |---  |---  |---| -- |
@@ -133,7 +153,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 |       |     |     |     | j | i  |
 
 </br>Now **if(22 > 2)** --> count of 22 becomes `count[j]+1` i.e. 2? 
-</br>No, we know that count reflects the longest subsequence, by traversing other elements in the array we obtained 3 as longest subsequence for 22. So why lower it to 2? Hence while adding `count[i] = count[j]+1` make sure it benefits the cause. Therefore place `count[i] = max(count[j]+1,count[i])` ie with the maximum of two numbers to avoid such cases.
+</br>**Me:** Haha, glad you paused and asked, in short **No**, we know that count reflects the longest subsequence. By traversing other elements in the array, we obtained 3 as longest subsequence for 22. So why lower it to 2? Hence while adding `count[i] = count[j]+1` make sure it benefits the cause. Therefore place `count[i] = max(count[j]+1,count[i])` ie with the maximum of two numbers to avoid such cases.
 
 
 
