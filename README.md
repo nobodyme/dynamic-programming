@@ -232,6 +232,8 @@ Why not code it up too?
 
     for(i=1;i<n;i++)
     minarr[0][i] = minarr[0][i-1] + a[0][i];
+
+where n is the number of rows
     
 We transfer the first element as it is to the min cost table and calculate the cost of others in the row.</br>
 **Friend:** Why not the columns? The cells in the first column have only one way of reaching them too, which is down from the first cell.</br>
@@ -259,8 +261,10 @@ Similarly, we calculate the cost of reaching each column by adding the cell with
 
 We'll code that up too!
 
-    for(i=1;i<n;i++)
+    for(i=1;i<m;i++)
     minarr[i][0] = minarr[i-1][0] + a[i][0];
+
+where m is the number of columns
 
 
 **Friend:** Now, how do we calculate the minimum cost to reach cell [1,1]?</br>

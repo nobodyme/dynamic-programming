@@ -18,9 +18,9 @@ int min(int a,int b, int c)
 
 //function to return min-cost to reach a point
 
-int minpath(int a[3][3], int n, int m)
+int minpath(int a[100][100], int n, int m)
 {
- int minarr[3][3] = {0},i,j,n1,m1;
+ int minarr[100][100] = {0},i,j,n1,m1;
  
  printf("\nenter the destination :");
  scanf("%d%d",&n1,&m1);
@@ -33,7 +33,7 @@ int minpath(int a[3][3], int n, int m)
  for(i=1;i<n;i++)
   minarr[0][i] = minarr[0][i-1] + a[0][i];
 
- for(i=1;i<n;i++)
+ for(i=1;i<m;i++)
   minarr[i][0] = minarr[i-1][0] + a[i][0];
 
 //table filling from the base cases
@@ -55,7 +55,9 @@ else
 
 int main()
 {
- int costarray[3][3] = { 1 ,2 ,3, 4,8, 2, 1 , 5 ,3 };
+//change input array as per your liking
+ int costarray[100][100] = { {1 ,2 ,3}, {4 ,8, 2}, {1 ,5 ,3} };
+//change rows and columns in the 2nd and 3rd parameter respectively
  printf("Minimum cost :%d\n",minpath(costarray,3,3));
  return 0;
 }
