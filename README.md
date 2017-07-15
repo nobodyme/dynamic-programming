@@ -195,9 +195,9 @@ How would go on solving this problem? What would you store to make the calculati
         {
           k=j;
 	  count++;
-	}
-	if(count>maxi)
-	  maxi = count;
+        }
+        if(count>maxi)
+          maxi = count;
       }
     }
     printf("\nMax-length = %d\n",maxi);
