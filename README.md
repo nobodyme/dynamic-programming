@@ -17,16 +17,23 @@ Before that, we need to identify whether a problem has the following properties,
   
 ### Problems:
 
-  - [Longest increasing subsequence](#problem-1)
-  - [Minimum cost problem](#problem-2)
+  - [Minimum cost problem](#problem-1)
+  - [Longest increasing subsequence](#problem-2)
 
-### Longest increasing subsequence <a name="problem-1"></a>
-The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements of the subsequence are sorted in increasing order. 
-For example, the length of LIS for {10, 12, 32, 2, 22, 23, 25, 30} is 6 and LIS is {10, 12, 22, 23, 25, 30}
+
+
+### Minimum cost problem <a name="problem-1"></a>
+
+Given a cost matrix cost[][] and a position (m, n) in cost[][], write a function that returns cost of minimum cost path to reach (m, n) from (0, 0). Each cell of the matrix represents a cost to traverse through that cell. Total cost of a path to reach (m, n) is sum of all the costs on that path (including both source and destination). You can only traverse down, right and diagonally lower cells from a given cell, i.e., from a given cell (i, j), cells (i+1, j), (i, j+1) and (i+1, j+1) can be traversed. You may assume that all costs are positive integers.
+
+| 1 | 2 | 3 |
+|---|---|---|
+| 4 | 8 | 2 |
+| 1 | 5 | 3 |
+
+(forgive the highlighting of the first row it is of no special significance)
 
 **Solution:**
-
-This will be elaborate step by step explanation about attaining the solution, since this is the first sum.
 
 **Me:** So how would you go on solving that?</br>
 **Friend:** Oh, the properties I read talked about saving the sub-problems to make the computations easier!</br>
@@ -34,7 +41,140 @@ This will be elaborate step by step explanation about attaining the solution, si
 **Friend:** Oh, it's too tough.</br>
 **Me:** No, it's not we will work together.</br>
 
-Simply, how would go on solving that using **brute force** just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
+How would you normally solve it, forgetting about code for a minute.</br>
+You probably eye all the cells of the numbers adding the cost along the path till you reach the destination. But you don't know if it's minimum so you start adding by traversing in a different direction. Then maybe after considering all paths you come up with a cost that's give you the least and maybe you needed a pen and paper along the way.</br>
+
+That's pretty much it.</br>
+
+My friend interrupts,</br>
+**Friend:** But the above method only solves the problem for one particular destination, what if we want to calculate the total cost for reaching a different destination.</br>
+**Me:** Good point!</br>
+**Friend:** That's why we store the minimum cost for reaching each cell in the array from the first cell. That way when we fill up all cells we will be left with solutions of every cell.</br>
+**Friend:** I lost you there.</br>
+**Me:** Haha, let me finish.
+
+So what do we know so far?</br>
+  - There's an array and we can move right, down and digonally lower.</br>
+  - We need to print the minimum cost of traversing to the given destination.</br>
+  - And we start at the first cell.</br>
+
+**Breaking down the problem:**
+
+**Me:** What is simply the cost of moving from [0,0] to [0,1]?</br>
+**Friend:** It's `2 + 1 = 3`</br>
+**Me:** What is the minimum cost of moving from [0,0] to [0,1]?</br>
+**Friend:** Still 3, because there's no other way we could reach [0,1] since we can only move right or down or diagonally lower. We can **only** reach [0,1] from [0,0].</br>
+**Me:** Excellent! So what is the minimum cost of moving from [0,1] to [0,2]?</br>
+**Friend:** Oh wait, the cost of moving from **[0,0] to [0,1]** is **3**, hence **[0,1] to [0,2]** would be  `3 + cost of getting to (0,1)` which is `3 + 3 = 6`. </br>
+**Me:** Now shall we store this obtained cost corresponding to each cell, so that we can return them, when the cell is the destination?</br>
+**Friend:** Fair enough.
+
+
+<table>
+<tr><th>Table A </th> <th>Min cost</th></tr>
+<tr><td>
+
+| 1 | 2 | 3 |
+|---|---|---|
+| 4 | 8 | 2 |
+| 1 | 5 | 3 |
+
+</td><td>
+
+| 1 | 3 | 6 |
+|---|---|---|
+| - | - | - |
+| - | - | - |
+
+</td></tr> </table>
+
+Why not code it up too?
+
+    minarr[0][0] = a[0][0];
+
+    for(i=1;i<n;i++)
+      minarr[0][i] = minarr[0][i-1] + a[0][i];
+
+where n is the number of rows
+    
+We transfer the first element as it is to the min cost table and calculate the cost of others in the row.</br>
+**Friend:** Why not the columns? The cells in the first column have only one way of reaching them too, which is down from the first cell.</br>
+**Me:** Yeah absolutely, that's our next step.
+
+Similarly, we calculate the cost of reaching each column by adding the cell with the previous ones in the column.
+
+<table>
+<tr><th>Table A </th> <th>Min cost</th></tr>
+<tr><td>
+
+| 1 | 2 | 3 |
+|---|---|---|
+| 4 | 8 | 2 |
+| 1 | 5 | 3 |
+
+</td><td>
+
+| 1 | 3 | 6 |
+|---|---|---|
+| 5 | - | - |
+| 6 | - | - |
+
+</td></tr> </table>
+
+We'll code that up too!
+
+    for(i=1;i<m;i++)
+      minarr[i][0] = minarr[i-1][0] + a[i][0];
+
+where m is the number of columns
+
+
+**Friend:** Now, how do we calculate the minimum cost to reach cell [1,1]?</br>
+**Me:** We know we can only traverse left, down or diagonally lower cell. Hence we can reach cell [1,1] only from cell [0,0] or [0,1] or [1,0]. So now that our table already has the minimum values to reach [0,0], [0,1] and [1,0], simply the minimum of those three values plus the cost of reaching cell [1,1] gives us our result.</br>
+
+So the `cost to reach cell [1,1] = a[1,1] + min(minarr[0,0], minarr[0,1], minarr[1,0])`</br>
+`minarr[1,1] = 8 + min(1,3,5)`</br>
+So, `minarr[1,1] = 9`</br>
+
+Similarly we do for all cells, starting from 1,1.
+
+Let's code it up again,
+
+    for(i=1;i<n;i++)
+      for(j=1;j<m;j++)
+        minarr[i][j] = (a[i][j] + min(minarr[i-1][j-1],minarr[i][j-1],minarr[i-1][j])); 
+      
+      
+ <table>
+<tr><th>Table A </th> <th>Min cost</th></tr>
+<tr><td>
+
+| 1 | 2 | 3 |
+|---|---|---|
+| 4 | 8 | 2 |
+| 1 | 5 | 3 |
+
+</td><td>
+
+| 1 | 3 | 6 |
+|---|---|---|
+| 5 | 9 | 5 |
+| 6 |10 | 8 |
+
+</td></tr> </table>
+
+Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own.
+
+Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/).
+
+### Longest increasing subsequence <a name="problem-2"></a>
+
+The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements of the subsequence are sorted in increasing order. 
+For example, the length of LIS for {10, 12, 32, 2, 22, 23, 25, 30} is 6 and LIS is {10, 12, 22, 23, 25, 30}
+
+**Solution:**
+
+How would go on solving this problem? What would you store to make the calculations easier? Okay simply, how would you solve the above problem using **brute force** just like how you would perform a [selection sort](https://en.wikipedia.org/wiki/Selection_sort)!
 
 
 | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
@@ -48,17 +188,17 @@ Simply, how would go on solving that using **brute force** just like how you wou
 
     for(i=0;i<n-1;i++)
     {   
-		 count = 1;
-		 for(j=i+1,k=i;j<n,k<n-1;j++)
-		 {
-			 if(a[j] > a[k])
-			 {
-				 k=j;
-				 count++;
-			 }
-			 if(count>maxi)
-				maxi = count;
-		 }
+      count = 1;
+      for(j=i+1,k=i;j<n,k<n-1;j++)
+      {
+        if(a[j] > a[k])
+        {
+          k=j;
+	  count++;
+	}
+	if(count>maxi)
+	  maxi = count;
+      }
     }
     printf("\nMax-length = %d\n",maxi);
   
@@ -182,146 +322,6 @@ As we have learnt,
     }
 
 After that we find the maximum of the count array and print it, [full code snippet is here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C).
-
-Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/).
-
-### Minimum cost problem <a name="problem-2"></a>
-
-Given a cost matrix cost[][] and a position (m, n) in cost[][], write a function that returns cost of minimum cost path to reach (m, n) from (0, 0). Each cell of the matrix represents a cost to traverse through that cell. Total cost of a path to reach (m, n) is sum of all the costs on that path (including both source and destination). You can only traverse down, right and diagonally lower cells from a given cell, i.e., from a given cell (i, j), cells (i+1, j), (i, j+1) and (i+1, j+1) can be traversed. You may assume that all costs are positive integers.
-
-| 1 | 2 | 3 |
-|---|---|---|
-| 4 | 8 | 2 |
-| 1 | 5 | 3 |
-
-(forgive the highlighting of the first row it is of no special significance)
-
-**Solution:**
-
-So again, what would you think is the approriate value to store to make the problem easier with dp?. Nothing comes to mind? It's alright.</br>
-How would you normally solve it, forgetting about code for a minute.</br>
-You probably eye all the cells of the numbers adding the cost along the path till you reach the destination. But you don't know if it's minimum so you start adding by traversing in a different direction. Then maybe after considering all paths you come up with a cost that's give you the least and maybe you needed a pen and paper along the way.</br>
-
-That's pretty much it.</br>
-
-My friend interrupts,</br>
-**Friend:** But the above method only solves the problem for one particular destination, what if we want to calculate the total cost for reaching a different destination.</br>
-**Me:** Good point!</br>
-**Friend:** That's why we store the minimum cost for reaching each cell in the array from the first cell. That way when we fill up all cells we will be left with solutions of every cell.</br>
-**Friend:** I lost you there.</br>
-**Me:** Haha, let me finish.
-
-So what do we know so far?</br>
-There's an array and we can move right, down and digonally lower.</br>
-We need to print the minimum cost of traversing to the given destination.</br>
-And we start at the first cell.</br>
-
-**Breaking down the problem:**
-
-**Me:** What is simply the cost of moving from [0,0] to [0,1]?</br>
-**Friend:** It's `2 + 1 = 3`</br>
-**Me:** What is the minimum cost of moving from [0,0] to [0,1]?</br>
-**Friend:** Still 3, because there's no other way we could reach [0,1] since we can only move right or down or diagonally lower. We can **only** reach [0,1] from [0,0].</br>
-**Me:** Excellent! So what is the minimum cost of moving from [0,1] to [0,2]?</br>
-**Friend:** Oh wait, the cost of moving from **[0,0] to [0,1]** is **3**, hence **[0,1] to [0,2]** would be  `3 + cost of getting to (0,1)` which is `3 + 3 = 6`. </br>
-**Me:** Now shall we store this obtained cost corresponding to each cell, so that we can return them, when the cell is the destination?</br>
-**Friend:** Fair enough.
-
-
-<table>
-<tr><th>Table A </th> <th>Min cost</th></tr>
-<tr><td>
-
-| 1 | 2 | 3 |
-|---|---|---|
-| 4 | 8 | 2 |
-| 1 | 5 | 3 |
-
-</td><td>
-
-| 1 | 3 | 6 |
-|---|---|---|
-| - | - | - |
-| - | - | - |
-
-</td></tr> </table>
-
-Why not code it up too?
-
-    minarr[0][0] = a[0][0];
-
-    for(i=1;i<n;i++)
-    minarr[0][i] = minarr[0][i-1] + a[0][i];
-
-where n is the number of rows
-    
-We transfer the first element as it is to the min cost table and calculate the cost of others in the row.</br>
-**Friend:** Why not the columns? The cells in the first column have only one way of reaching them too, which is down from the first cell.</br>
-**Me:** Yeah absolutely, that's our next step.
-
-Similarly, we calculate the cost of reaching each column by adding the cell with the previous ones in the column.
-
-<table>
-<tr><th>Table A </th> <th>Min cost</th></tr>
-<tr><td>
-
-| 1 | 2 | 3 |
-|---|---|---|
-| 4 | 8 | 2 |
-| 1 | 5 | 3 |
-
-</td><td>
-
-| 1 | 3 | 6 |
-|---|---|---|
-| 5 | - | - |
-| 6 | - | - |
-
-</td></tr> </table>
-
-We'll code that up too!
-
-    for(i=1;i<m;i++)
-    minarr[i][0] = minarr[i-1][0] + a[i][0];
-
-where m is the number of columns
-
-
-**Friend:** Now, how do we calculate the minimum cost to reach cell [1,1]?</br>
-**Me:** We know we can only traverse left, down or diagonally lower cell. Hence we can reach cell [1,1] only from cell [0,0] or [0,1] or [1,0]. So now that our table already has the minimum values to reach [0,0], [0,1] and [1,0], simply the minimum of those three values plus the cost of reaching cell [1,1] gives us our result.</br>
-
-So the `cost to reach cell [1,1] = a[1,1] + min(minarr[0,0], minarr[0,1], minarr[1,0])`</br>
-`minarr[1,1] = 8 + min(1,3,5)`</br>
-So, `minarr[1,1] = 9`</br>
-
-Similarly we do for all cells, starting from 1,1.
-
-Let's code it up again,
-
-    for(i=1;i<n;i++)
-     for(j=1;j<m;j++)
-      minarr[i][j] = (a[i][j] + min(minarr[i-1][j-1],minarr[i][j-1],minarr[i-1][j])); 
-      
-      
- <table>
-<tr><th>Table A </th> <th>Min cost</th></tr>
-<tr><td>
-
-| 1 | 2 | 3 |
-|---|---|---|
-| 4 | 8 | 2 |
-| 1 | 5 | 3 |
-
-</td><td>
-
-| 1 | 3 | 6 |
-|---|---|---|
-| 5 | 9 | 5 |
-| 6 |10 | 8 |
-
-</td></tr> </table>
-
-Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own.
 
 ### More to come
 
