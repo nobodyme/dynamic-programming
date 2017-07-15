@@ -22,7 +22,7 @@ Before that, we need to identify whether a problem has the following properties,
 
 ### Longest increasing subsequence <a name="problem-1"></a>
 The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements of the subsequence are sorted in increasing order. 
-For example, the length of LIS for { 10, 12, 32, 2, 22, 23, 25, 30 } is 6 and LIS is { 10, 12, 22, 23, 25, 30 }
+For example, the length of LIS for {10, 12, 32, 2, 22, 23, 25, 30} is 6 and LIS is {10, 12, 22, 23, 25, 30}
 
 **Solution:**
 
@@ -65,17 +65,17 @@ You would compare every element with every other element, if it's greater than t
     printf("\nMax-length = %d\n",maxi);
   
 
-So such an implementation returns the `max-length = 5`, which is { 2, 22, 23, 24, 25 }. We know it's 6 and LIS is { 10, 12, 22, 23, 25, 30 }. Why does it fail to catch the above lis? because while traversing { 10, 12, 32, 22, 23, 25, 30}, the code will run as follows,it will check,</br>
+So such an implementation returns, `max-length = 5`, which is {2, 22, 23, 24, 25}. We know it's 6 and LIS is {10, 12, 22, 23, 25, 30}. Why does it fail to catch the above lis? because while traversing {10, 12, 32, 22, 23, 25, 30}, the code will run as follows,it will check,</br>
 if(10>12) yes--> count is 2, then</br>
 if(32>12) yes--> count is 3, then</br>
-At this point **count=3**, from there on count won't get incremented because the following elements are lesser than 32 and hence condition like (22>32) will consecutively fail. If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem a different approach might but definitely in exponential time)
+At this point **count = 3**, from there on count won't get incremented because the following elements are lesser than 32 and hence condition like (22>32) will consecutively fail. If only it knew that by **avoiding 32** and traversing through the rest of the array we would actually obtain the result which is `max-length = 6`. This is exactly the information we store for our computation using DP. In brute force terms, we store the count variable for all possible alternatives of traversal in the array and then simply find the maximum of it.(Not that brute force cannot solve the problem, a different approach might but definitely in exponential time)
 
- And we set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e { 2, 2, 2, 2 }, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
+ And we set `count=1` and not 0 initially, because when we have a case where all numbers are same in the array i.e {2, 2, 2, 2}, we must return count as **1** since one element is the still a subarray of the larger one which is simply { 2 } therefore returning 0 would be wrong.
  
 **Dp solution:**
 
-So how would code the same in dp, well actually it's easier.</br>
-We first start off by creating another array for storing the count for each member of the array, as we discussed earlier we initialize it to `1`
+So how would you code the same in dp, well actually it's easier.</br>
+We first start off by creating another array for storing the count for each member of the array and as we discussed earlier we initialize it to `1`
 
 | array | 10  | 12  | 32  |  2  | 22  | 23  | 25 | 30 |
 |---    |---  |---  |---  | --- | --- |---  |--- |--- |
@@ -125,7 +125,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 
 </br>The array stays the same since each case checking **if(2>10)** , **if(2>12)** or **if(2>32)** fails, and it's count variable remains unchanged.
 
-</br> Now let's add the next number, **22** and check for 10, 12, 32, similar to the previous for 10 and 12 count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
+</br> Now let's add the next number, **22** and check for 10, 12, 32, similar to the previous one, for 10 and 12, count of 22 is incremented to 3 and with 32 it fails and remains as 3, and j is incremented to point 2.
 
 | array | 10  | 12  | 32  | 2 | 22 |
 |---    |---  |---  |---  |---| -- |
@@ -180,7 +180,7 @@ Given a cost matrix cost[][] and a position (m, n) in cost[][], write a function
 
 So again, what would you think is the approriate value to store to make the problem easier with dp?. Nothing comes to mind? It's alright.</br>
 How would you normally solve it, forgetting about code for a minute.</br>
-You probably eye all the cells of the numbers adding the cost along the path till you reach the destination. But you don't know if it's minimum so you start adding by traversing in a different direction. Then maybe after considering enough path until you're satisfied you come up with a cost that's give you the least.</br>
+You probably eye all the cells of the numbers adding the cost along the path till you reach the destination. But you don't know if it's minimum so you start adding by traversing in a different direction. Then maybe after considering all paths you come up with a cost that's give you the least and maybe you needed a pen and paper along the way.</br>
 
 That's pretty much it.</br>
 
@@ -301,7 +301,7 @@ Let's code it up again,
 
 </td></tr> </table>
 
-Now that our table is filled, we simply return the cell of the give destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own.
+Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own.
 
 ### More to come
 
