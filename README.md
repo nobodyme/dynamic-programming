@@ -94,7 +94,7 @@ For, now lets us consider only the elements **10** and **12** exist in the array
 </br>**if(12>10)** --> increment corresponding count of 12 ie `count[i] = count[j] + 1;`
 
 Why is it, `count[j]+1`?
-Because the count[j] stores the max count of sequence when 10 is traversed, now since we chose to traverse through 10 we add it's length to 12's count.The result is the Longest subsequence when 10, 12 alone are the elements in the array.
+Because the count[j] stores the max count of sequence when 10 is traversed, now since we find another element 12 greater than 10 and we chose to traverse through 10 we add it's length to 12's count + 1 (i.e 12 itself).The result is the Longest increasing subsequence (i.e. 2) when 10, 12 alone are the elements in the array.
 
 Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting element of the array and traverse from the beginning to see **adding 32** provides a longer subsequence.
 </br>The array becomes,
@@ -105,7 +105,7 @@ Now let us consider 32, increment `i to 32 and j to 10` ie j to the starting ele
 |count  |  1  |  2  |  1  |
 |       |  j  |     |  i  |
 
-</br>Now since **if(32>10)** yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; Then increment j,
+</br>Now since **if(32>10)** yes --> therefore repeat the step of incrementing 32's count --> count[i] = count[j]+1; Check to see if other elements in the array prove useful too, therefore increment j till all elements before the 32 are traversed,
 
 ![animated](https://user-images.githubusercontent.com/22789194/27852855-3ce86814-6150-11e7-9a31-bcb108e1308d.gif)
 
