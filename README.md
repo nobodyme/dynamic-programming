@@ -335,6 +335,10 @@ After that we find the maximum of the count array and print it, [full code snipp
 
 ### Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
+  - [How to approach Dynamic Programming by Paul Baltescu on Quora](https://www.quora.com/What-are-some-good-ways-to-approach-a-dynamic-programming-question/answer/Paul-Baltescu)
   - [Geeks for geeks for practice problems](http://practice.geeksforgeeks.org/topics/Dynamic-Programming/)
   - [Geeks for geeks tutorials](http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming)
   - [Hackerearth article for problems involving grids](https://www.hackerearth.com/practice/notes/dynamic-programming-problems-involving-grids/)
+  - [Problem list - top coder](https://apps.topcoder.com/forums/?module=Thread&start=0&threadID=674592)
+  - [Problem sets - code forces](http://codeforces.com/problemset/tags/dp?order=BY_SOLVED_DESC)
+  - [Dp challenges - Hackerrank](https://www.hackerrank.com/domains/algorithms/dynamic-programming)
