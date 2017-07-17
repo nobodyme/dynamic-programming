@@ -1,6 +1,6 @@
 # Dynamic Programming
 
-There were huge number of sources on the internet on this topic but still we (me and my friend) couldn't understand any of it for a very long time until we fiddled with code and tracked the output for every change in the input. So this repository is exactly created for people like us to make the transition from [greedy](https://en.wikipedia.org/wiki/Greedy_algorithm) to dynamic programming easier. This will just be an introduction to dynamic programming, so that one can pick it up from there. I have added additional sources for practice and other online tutorials that I found a little helpful at the end and will continue to do so as I find something new. It is for programmers who are comfortable with brute-force and might not the serve the purpose for absolute beginners.
+There were huge number of sources on the internet on this topic but still we (me and my friend) couldn't understand any of it for a very long time until we fiddled with code and tracked the output for every change in the input. So this repository is exactly created for people like us to make the transition from [greedy](https://en.wikipedia.org/wiki/Greedy_algorithm) to dynamic programming easier. This will just be an introduction to dynamic programming, so that one can pick it up from there. I have added additional sources for practice and other online tutorials that I found a little helpful at the end and will continue to do so as I find something new. It is for programmers who are comfortable with brute-force and might not the serve the purpose for absolute beginners. Contributions or suggestions are welcome.
 
 ### Definition 
 
@@ -336,9 +336,14 @@ After that we find the maximum of the count array and print it, [full code snipp
 ### Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
   - [How to approach Dynamic Programming by Paul Baltescu on Quora](https://www.quora.com/What-are-some-good-ways-to-approach-a-dynamic-programming-question/answer/Paul-Baltescu)
-  - [Geeks for geeks for practice problems](http://practice.geeksforgeeks.org/topics/Dynamic-Programming/)
   - [Geeks for geeks tutorials](http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming)
   - [Hackerearth article for problems involving grids](https://www.hackerearth.com/practice/notes/dynamic-programming-problems-involving-grids/)
+
+  
+  ### Problems lists from various sites
+ 
+  - [Practice problems - Geeks for Geeks](http://practice.geeksforgeeks.org/topics/Dynamic-Programming/)
   - [Problem list - top coder](https://apps.topcoder.com/forums/?module=Thread&start=0&threadID=674592)
   - [Problem sets - code forces](http://codeforces.com/problemset/tags/dp?order=BY_SOLVED_DESC)
   - [Dp challenges - Hackerrank](https://www.hackerrank.com/domains/algorithms/dynamic-programming)
+
