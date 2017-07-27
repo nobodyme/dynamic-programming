@@ -7,7 +7,7 @@
 
 Input: 	3,1,-5,-8,0,2,2
 Output: Sum: 4
-				Array: 0,2,2
+        Array: 0,2,2
 
 Although [3,1] gives sum as 4 which is same as [0,2,2] the latter is the longest*/
 
@@ -31,28 +31,28 @@ for(i=1;i<n;i++)
 if(sum + a[i] < a[i])
 {
 //then this marks "start" of the longest-sub-array, notice this is first initialized 0 above
-	start = i;
-	sum = a[i];
+ start = i;
+ sum = a[i];
 }
 
 //else simply add the element to the array
 else
-	sum = sum + a[i];
+  sum = sum + a[i];
 
 //if existing max-value is lesser than the current sum, assign the new value to sum and mark the end of the sub-array
 if(max_value < sum)
 {
-	max_value = sum;
-	end = i;
+  max_value = sum;
+  end = i;
 }
 
 //if sum is equal to previous one, check if length is greater than previous one, if so mark this one as end
 if(max_value == sum)
 {
-	if(start - i < start - end)
-	{
-		end = i;		
-	}
+  if(start - i < start - end)
+  {
+    end = i;		
+  }
 }
 
 }
