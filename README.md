@@ -163,7 +163,7 @@ Let's code it up again,
 
 </td></tr> </table>
 
-Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own.
+Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own and another similar problem is added in the [repository](https://github.com/nobodyme/dynamic-programming/blob/master/Count-all-paths.C).
 
 Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/).
 
@@ -321,7 +321,7 @@ As we have learnt,
      }
     }
 
-After that we find the maximum of the count array and print it, [full code snippet is here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C).
+After that we find the maximum of the count array and print it, [full code snippet is here](https://github.com/nobodyme/Dynamic-Programming/blob/master/longest-increasing-sub-sequence.C) and a look alike problem just with a [pair of numbers](https://github.com/nobodyme/dynamic-programming/blob/master/lis-pair.C).
 
 ### More to come
 
