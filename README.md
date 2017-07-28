@@ -163,7 +163,7 @@ Let's code it up again,
 
 </td></tr> </table>
 
-Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0). Try it on your own and another similar problem is added in the [repository](https://github.com/nobodyme/dynamic-programming/blob/master/Count-all-paths.C).
+Now that our table is filled, we simply return the cell of the given destination in the minimum cost array. The full code is [given here](https://github.com/nobodyme/Dynamic-Programming/blob/master/minimum-cost-path.C). Here is a [similar problem](http://practice.geeksforgeeks.org/problems/largest-zigzag-sequence/0), try it on your own and another similar problem is added in the [repository](https://github.com/nobodyme/dynamic-programming/blob/master/Count-all-paths.C).
 
 Hence by considering the elements one by one we have built up our solution or in DP terms we have acquired our solution in bottom up fashion(tabulation method) from the sub-problems. There's another approach to it called memoizatation. The difference between both is explained in the [article over here](http://www.geeksforgeeks.org/tabulation-vs-memoizatation/).
 

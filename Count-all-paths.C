@@ -1,8 +1,3 @@
-
-//author     : Naveen
-//github-link: https://github.com/nobodyme
-//This is a part of the article focusing on introduction to dp, hence please avoid the vage declaration of array-sizes and optimizations to it
-
 /*
 Program to find all possible paths to reach to bottom-right cell starting from the top-left
 Can move only right,down or diagonally lower
@@ -10,10 +5,11 @@ Can move only right,down or diagonally lower
 Enter the no of rows: 2
 Enter the no of columns: 2
 Total paths: 3
-
-   j 
-i 1 1
-  1 3
+   
+   j
+   ___
+i |1 1
+  |1 3
   
   sum of all three sides, gives total path.
 */

@@ -1,7 +1,3 @@
-//author     : Naveen
-//github-link: https://github.com/nobodyme
-//This is a part of the article focusing on introduction to dp, hence please avoid the vage declaration of array-sizes and optimizations to it
-
 #include<stdio.h>
 #include<stdlib.h>
 
