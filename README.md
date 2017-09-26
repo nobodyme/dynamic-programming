@@ -42,7 +42,7 @@ Given a cost matrix cost[][] and a position (m, n) in cost[][], write a function
 **Me:** No, it's not we will work together.</br>
 
 How would you normally solve it, forgetting about code for a minute.</br>
-You probably eye all the cells of the numbers adding the cost along the path till you reach the destination. But you don't know if it's minimum so you start adding by traversing in a different direction. Then maybe after considering all paths you come up with a cost that's give you the least and maybe you needed a pen and paper along the way.</br>
+You probably eye all the cells, adding the cost along the path till you reach the destination. But you don't know if it's minimum, so you start adding again by traversing in a different direction. Then maybe after considering all paths, you come up with a cost that's give you the least.</br>
 
 That's pretty much it.</br>
 
@@ -66,7 +66,7 @@ So what do we know so far?</br>
 **Friend:** Still 3, because there's no other way we could reach [0,1] since we can only move right or down or diagonally lower. We can **only** reach [0,1] from [0,0].</br>
 **Me:** Excellent! So what is the minimum cost of moving from [0,1] to [0,2]?</br>
 **Friend:** Oh wait, the cost of moving from **[0,0] to [0,1]** is **3**, hence **[0,1] to [0,2]** would be  `3 + cost of getting to (0,1)` which is `3 + 3 = 6`. </br>
-**Me:** Now shall we store this obtained cost corresponding to each cell, so that we can return them, when the cell is the destination?</br>
+**Me:** Now shall we store this obtained cost corresponding to each cell in a different array, so that we can return them, when the cell is the destination?</br>
 **Friend:** Fair enough.
 
 
@@ -98,6 +98,7 @@ Why not code it up too?
 where n is the number of rows
     
 We transfer the first element as it is to the min cost table and calculate the cost of others in the row.</br>
+
 **Friend:** Why not the columns? The cells in the first column have only one way of reaching them too, which is down from the first cell.</br>
 **Me:** Yeah absolutely, that's our next step.
 
