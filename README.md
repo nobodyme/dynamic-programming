@@ -332,7 +332,7 @@ After that we find the maximum of the count array and print it, [full code snipp
   
   - Dynamic programming is just like any like any other kind you get some, you don't get some practice makes it all better. I have lot to do too.
   - From my experience, it is similar to brute force but instead of exploring the whole input space, you find a way to store intermediate results that arise from the input and exhaustively explore that for the required result.
-  - Yes, it is indeed a method of trading time for space. A recursive approach may utilize a little less space but dynamic programming approach is quicker.
+  - Yes, it is indeed a method of trading space for time. A recursive approach may utilize a little less space but dynamic programming approach is quicker.
 
 ## Other resources
   - [Hackerearth article explaining more on "Why dynamic programming"](https://www.hackerearth.com/practice/notes/dynamic-programming-i-1/)
